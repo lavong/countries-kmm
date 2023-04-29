@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("com.apollographql.apollo3").version(Versions.apollo)
 }
 
 kotlin {
@@ -23,7 +24,11 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation("com.apollographql.apollo3:apollo-runtime:${Versions.apollo}")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
@@ -54,9 +59,14 @@ kotlin {
 
 android {
     namespace = "com.ingloriousmind.countrieskmm"
-    compileSdk = 33
+    compileSdk = Versions.compileSdk
     defaultConfig {
-        minSdk = 28
-        targetSdk = 33
+        minSdk = Versions.minSdk
+    }
+}
+
+apollo {
+    service("CountriesService") {
+        packageName.set("com.ingloriousmind.countrieskmm")
     }
 }
