@@ -5,19 +5,19 @@ plugins {
 
 android {
     namespace = "com.ingloriousmind.countrieskmm.android"
-    compileSdk = 33
+    compileSdk = Versions.compileSdk
     defaultConfig {
         applicationId = "com.ingloriousmind.countrieskmm.android"
-        minSdk = 28
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = Versions.minSdk
+        targetSdk = Versions.targetSdk
+        versionCode = Versions.versionCode
+        versionName = Versions.versionName
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.0"
+        kotlinCompilerExtensionVersion = Versions.composeCompiler
     }
     packagingOptions {
         resources {
@@ -40,10 +40,18 @@ android {
 
 dependencies {
     implementation(project(":common"))
-    implementation("androidx.compose.ui:ui:1.3.1")
-    implementation("androidx.compose.ui:ui-tooling:1.3.1")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.3.1")
-    implementation("androidx.compose.foundation:foundation:1.3.1")
-    implementation("androidx.compose.material:material:1.3.1")
-    implementation("androidx.activity:activity-compose:1.6.1")
+
+    implementation(platform(Compose.bom))
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.ui:ui-tooling")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.compose.foundation:foundation")
+    implementation("androidx.compose.material:material")
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.ui:ui-tooling")
+    implementation("androidx.activity:activity-compose")
+    implementation(Compose.navigation)
+
+    androidTestImplementation(platform(Compose.bom))
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
 }
