@@ -38,7 +38,7 @@ struct CountriesViewContent: View {
                 .padding([.horizontal], 16)
 
             VStack {
-                Text("\(country.name) (\(country.code)")
+                Text("\(country.name) (\(country.native))")
                     .font(.body)
                     .frame(maxWidth: .infinity, alignment: .leading)
 

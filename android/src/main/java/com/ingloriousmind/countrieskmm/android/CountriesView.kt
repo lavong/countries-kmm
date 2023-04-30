@@ -78,7 +78,7 @@ private fun CountryItem(country: CountriesQuery.Country, inputs: CountriesViewMo
 
         Column {
             Text(
-                text = "${country.name} (${country.code})",
+                text = "${country.name} (${country.native})",
                 style = MaterialTheme.typography.bodyMedium,
             )
             Spacer(modifier = Modifier.height(8.dp))
