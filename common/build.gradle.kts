@@ -1,7 +1,9 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("com.apollographql.apollo3").version(Versions.apollo)
+    id("com.apollographql.apollo3") version Versions.apollo
+    id("com.google.devtools.ksp") version Versions.ksp
+    id("com.rickclephas.kmp.nativecoroutines") version Versions.kmpNativeCoroutines
 }
 
 kotlin {
@@ -27,16 +29,21 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation("com.apollographql.apollo3:apollo-runtime:${Versions.apollo}")
+                api("com.rickclephas.kmm:kmm-viewmodel-core:${Versions.kmmViewModel}")
+                implementation(Koin.core)
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
+                implementation(Koin.test)
             }
         }
         val androidMain by getting {
             dependencies {
                 api("com.jakewharton.timber:timber:${Versions.timber}")
+                api("androidx.lifecycle:lifecycle-viewmodel:${Versions.androidxViewModel}")
+                api("androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidxViewModel}")
             }
         }
         val androidUnitTest by getting
@@ -57,6 +64,11 @@ kotlin {
             iosX64Test.dependsOn(this)
             iosArm64Test.dependsOn(this)
             iosSimulatorArm64Test.dependsOn(this)
+        }
+
+        all {
+            languageSettings.optIn("kotlin.RequiresOptIn")
+            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
         }
     }
 }

@@ -50,7 +50,10 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.ui:ui-tooling")
     implementation("androidx.activity:activity-compose")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.androidxViewModel}")
     implementation(Compose.navigation)
+    implementation(Compose.koin)
+    implementation(Koin.android)
 
     androidTestImplementation(platform(Compose.bom))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")

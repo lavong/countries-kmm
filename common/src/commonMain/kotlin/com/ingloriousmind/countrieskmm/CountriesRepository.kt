@@ -2,14 +2,12 @@ package com.ingloriousmind.countrieskmm
 
 import com.apollographql.apollo3.ApolloClient
 
-interface CountriesRepositoryType
+interface CountriesRepositoryType {
+    suspend fun fetchCountries(): List<CountriesQuery.Country>
+}
 
-class CountriesRepository : CountriesRepositoryType {
-    suspend fun fetchCountries(): List<CountriesQuery.Country> {
-        val client = ApolloClient.Builder()
-            .serverUrl("https://countries.trevorblades.com/graphql")
-            .build()
-
+class CountriesRepository(private val client: ApolloClient) : CountriesRepositoryType {
+    override suspend fun fetchCountries(): List<CountriesQuery.Country> {
         val response = client.query(CountriesQuery()).execute()
 
         return response.data?.countries.orEmpty()
