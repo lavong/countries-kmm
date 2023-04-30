@@ -34,7 +34,7 @@ struct CountriesViewContent: View {
     private func countryItem(_ country: CountriesQuery.Country) -> some View {
         HStack {
             Text(country.emoji)
-                .font(.headline)
+                .font(.largeTitle)
                 .padding([.horizontal], 16)
 
             VStack {
