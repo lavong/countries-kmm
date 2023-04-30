@@ -12,6 +12,7 @@ object Versions {
     const val composeCompiler = "1.4.6"
     const val composeNavigation = "2.5.3"
     const val kotlin = "1.8.20"
+    const val timber = "5.0.1"
 }
 
 object Compose {
