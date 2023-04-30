@@ -29,6 +29,7 @@ import com.ingloriousmind.countrieskmm.CountriesQuery
 import com.ingloriousmind.countrieskmm.CountriesUiState
 import com.ingloriousmind.countrieskmm.CountriesViewModel
 import com.ingloriousmind.countrieskmm.CountriesViewModelInputs
+import com.ingloriousmind.countrieskmm.demoCountries
 
 @Composable
 fun CountriesScreen() {
@@ -94,19 +95,7 @@ private fun CountryItem(country: CountriesQuery.Country, inputs: CountriesViewMo
 @Composable
 private fun CountriesViewPreview() {
     val previewState = CountriesUiState(
-        countries = listOf(
-            CountriesQuery.Country(
-                "CH",
-                "Switzerland",
-                "",
-                "",
-                CountriesQuery.Continent("", "Europe"),
-                null,
-                emptyList(),
-                "\uD83C\uDDE8\uD83C\uDDED",
-                ""
-            )
-        ),
+        countries = demoCountries(),
         loading = false,
     )
 
